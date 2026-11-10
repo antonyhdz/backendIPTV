@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="13_de_chile.gatotv.com">
+    <display-name lang="es">CL - GatoTV - 13 de Chile</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/13_de_chile-mediano.png" />
+  </channel>
+  <programme start="20261108231000 -0500" stop="20261109010000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Vertigo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109010000 -0500" stop="20261109020000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Tu día</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109020000 -0500" stop="20261109030000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Infórmate en un 3x3</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109030000 -0500" stop="20261109045000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Teletrece</title>
+    <sub-title lang="es">A.M.</sub-title>
+    <desc lang="es">A.M.</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109045000 -0500" stop="20261109100000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Tu día</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109100000 -0500" stop="20261109122000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Teletrece</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109122000 -0500" stop="20261109123000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">El tiempo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109123000 -0500" stop="20261109133000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Vale Todo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109133000 -0500" stop="20261109141500 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Machos</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109141500 -0500" stop="20261109160000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Alfombra Roja</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109160000 -0500" stop="20261109180000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Qué dice Chile</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109180000 -0500" stop="20261109193000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Teletrece</title>
+    <sub-title lang="es">Noticias</sub-title>
+    <desc lang="es">Noticias</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109193000 -0500" stop="20261109194000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">El tiempo</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109194000 -0500" stop="20261109220000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Vértigo extremo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109220000 -0500" stop="20261109233000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Vale Todo</title>
+    <category lang="es">Telenovela</category>
+  </programme>
+  <programme start="20261109233000 -0500" stop="20261110003000 -0500" channel="13_de_chile.gatotv.com">
+    <title lang="es">Teletrece</title>
+    <sub-title lang="es">Noche</sub-title>
+    <desc lang="es">Noche</desc>
+    <category lang="es">Programa</category>
+  </programme>
+</tv>

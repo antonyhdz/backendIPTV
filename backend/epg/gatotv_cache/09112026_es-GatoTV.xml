@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="la_1.gatotv.com">
+    <display-name lang="es">ES - GatoTV - La 1</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/la_1-mediano.png" />
+  </channel>
+  <programme start="20261108230000 -0500" stop="20261109010000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Telediario matinal</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109010000 -0500" stop="20261109024500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">La hora de La 1: La hora política</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109024500 -0500" stop="20261109043000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">La hora de La 1: La hora de la actualidad</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109043000 -0500" stop="20261109075000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Hablando Claro</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109075000 -0500" stop="20261109080000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">El tiempo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109080000 -0500" stop="20261109084500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Telediario 1</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109084500 -0500" stop="20261109091000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Informativo territorial</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109091000 -0500" stop="20261109100000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Todo puede suceder</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109100000 -0500" stop="20261109105500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Servir y proteger</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109105500 -0500" stop="20261109115000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">El comodín de La 1</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109115000 -0500" stop="20261109125500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">El Cazador</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109125500 -0500" stop="20261109140000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Aqui la tierra</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109140000 -0500" stop="20261109145000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Telediario 2</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109145000 -0500" stop="20261109150500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">El tiempo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109150500 -0500" stop="20261109184500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">MasterChef Celebrity</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109184500 -0500" stop="20261109194000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">COMERSE EL MUNDO</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109194000 -0500" stop="20261109213500 -0500" channel="la_1.gatotv.com">
+    <title lang="es">La noche en 24 horas</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109213500 -0500" stop="20261109230000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Noticias 24h</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109230000 -0500" stop="20261110010000 -0500" channel="la_1.gatotv.com">
+    <title lang="es">Telediario matinal</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+</tv>

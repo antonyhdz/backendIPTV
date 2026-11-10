@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="caracol_colombia.gatotv.com">
+    <display-name lang="es">CO - GatoTV - Caracol Colombia</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/caracol_colombia-mediano.png" />
+  </channel>
+  <programme start="20261108234500 -0500" stop="20261109031500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">También Caerás</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109031500 -0500" stop="20261109034500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">También Caerás</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109034500 -0500" stop="20261109040000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Televentas</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109040000 -0500" stop="20261109041500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">La Finca de Hoy</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109041500 -0500" stop="20261109043000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Día a día I</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109043000 -0500" stop="20261109080000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Noticias Caracol</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109080000 -0500" stop="20261109103000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Día a día I</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109103000 -0500" stop="20261109113000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Rosalinda</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109113000 -0500" stop="20261109143000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Noticias Caracol</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109143000 -0500" stop="20261109153000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Ciudad lejana</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109153000 -0500" stop="20261109164500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Alas rotas</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109164500 -0500" stop="20261109180000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Destinos cruzados</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109180000 -0500" stop="20261109190000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Noticias Caracol</title>
+    <sub-title lang="es">Edición Central</sub-title>
+    <desc lang="es">Edición Central</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109190000 -0500" stop="20261109203000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Yo Me Llamo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109203000 -0500" stop="20261109213000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">¿En que lío me metí?</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109213000 -0500" stop="20261109223000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Rafael Orozco, el idolo</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109223000 -0500" stop="20261109233000 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">¿En que lío me metí?</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109233000 -0500" stop="20261109234500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">Televentas</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109234500 -0500" stop="20261110001500 -0500" channel="caracol_colombia.gatotv.com">
+    <title lang="es">El diario de Diana</title>
+    <category lang="es">Programa</category>
+  </programme>
+</tv>

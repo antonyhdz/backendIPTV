@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="animal_planet_uruguay.gatotv.com">
+    <display-name lang="es">UY - GatoTV - Animal Planet Uruguay</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/animal_planet_latinoamerica-mediano.png" />
+  </channel>
+  <programme start="20261108232600 -0500" stop="20261109001000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mansiones en los Árboles</title>
+    <sub-title lang="es">Temporada 10 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 10 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109001000 -0500" stop="20261109005600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mansiones en los árboles</title>
+    <category lang="es">Documental</category>
+  </programme>
+  <programme start="20261109005600 -0500" stop="20261109014600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Guaridas con estilo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109014600 -0500" stop="20261109023500 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109023500 -0500" stop="20261109032300 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109032300 -0500" stop="20261109041000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 6</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 6</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109041000 -0500" stop="20261109050000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Guardianes de Texas</title>
+    <sub-title lang="es">Temporada 10 | Episodio 1</sub-title>
+    <desc lang="es">Temporada 10 | Episodio 1</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109050000 -0500" stop="20261109054800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">The Bond</title>
+    <category lang="es">Documental</category>
+  </programme>
+  <programme start="20261109054800 -0500" stop="20261109061200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mi manada y yo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 1</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 1</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109061200 -0500" stop="20261109063600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mi manada y yo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 2</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 2</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109063600 -0500" stop="20261109072400 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Animales en riesgo Houston</title>
+    <sub-title lang="es">Temporada 19 | Episodio 5</sub-title>
+    <desc lang="es">Temporada 19 | Episodio 5</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109072400 -0500" stop="20261109081200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Dr. Jeff, veterinario</title>
+    <sub-title lang="es">Temporada 4 | Episodio 6</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 6</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109081200 -0500" stop="20261109090000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 6 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 6 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109090000 -0500" stop="20261109094800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mascotas revoltosas</title>
+    <sub-title lang="es">Temporada 3 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 3 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109094800 -0500" stop="20261109103600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Guardianes de Texas</title>
+    <sub-title lang="es">Temporada 10 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 10 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109103600 -0500" stop="20261109112400 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Guardianes de Texas</title>
+    <sub-title lang="es">Temporada 10 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 10 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109112400 -0500" stop="20261109121200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mansiones en los Árboles</title>
+    <sub-title lang="es">Temporada 10 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 10 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109121200 -0500" stop="20261109130000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mansiones en los árboles</title>
+    <category lang="es">Documental</category>
+  </programme>
+  <programme start="20261109130000 -0500" stop="20261109134800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Guaridas con estilo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109134800 -0500" stop="20261109143600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109143600 -0500" stop="20261109152400 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109152400 -0500" stop="20261109161200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 4 | Episodio 6</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 6</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109161200 -0500" stop="20261109170000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">El acuario</title>
+    <category lang="es">Documental</category>
+  </programme>
+  <programme start="20261109170000 -0500" stop="20261109174800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 5 | Episodio 8</sub-title>
+    <desc lang="es">Temporada 5 | Episodio 8</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109174800 -0500" stop="20261109183600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Dr. Jeff, veterinario</title>
+    <sub-title lang="es">Temporada 7 | Episodio 1</sub-title>
+    <desc lang="es">Temporada 7 | Episodio 1</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109183600 -0500" stop="20261109192400 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">The Bond</title>
+    <category lang="es">Documental</category>
+  </programme>
+  <programme start="20261109192400 -0500" stop="20261109194800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mi manada y yo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109194800 -0500" stop="20261109201200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mi manada y yo</title>
+    <sub-title lang="es">Temporada 1 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 1 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109201200 -0500" stop="20261109210000 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Animales en riesgo Houston</title>
+    <sub-title lang="es">Temporada 19 | Episodio 6</sub-title>
+    <desc lang="es">Temporada 19 | Episodio 6</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109210000 -0500" stop="20261109214800 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Dr. Jeff, veterinario</title>
+    <sub-title lang="es">Temporada 4 | Episodio 3</sub-title>
+    <desc lang="es">Temporada 4 | Episodio 3</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109214800 -0500" stop="20261109223600 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Veterinarios de Texas</title>
+    <sub-title lang="es">Temporada 6 | Episodio 5</sub-title>
+    <desc lang="es">Temporada 6 | Episodio 5</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109223600 -0500" stop="20261109232400 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">Mascotas revoltosas</title>
+    <sub-title lang="es">Temporada 3 | Episodio 4</sub-title>
+    <desc lang="es">Temporada 3 | Episodio 4</desc>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109232400 -0500" stop="20261110001200 -0500" channel="animal_planet_uruguay.gatotv.com">
+    <title lang="es">The Bond</title>
+    <category lang="es">Documental</category>
+  </programme>
+</tv>

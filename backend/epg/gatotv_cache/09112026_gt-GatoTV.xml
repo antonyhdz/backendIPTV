@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="3_de_guatemala.gatotv.com">
+    <display-name lang="es">GT - GatoTV - 3 de Guatemala</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/3_de_guatemala-mediano.png" />
+  </channel>
+  <programme start="20261109000000 -0500" stop="20261109060000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Fin de transmisión</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109060000 -0500" stop="20261109090000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Telediario - Matutino</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109090000 -0500" stop="20261109100000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Laura</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109100000 -0500" stop="20261109110000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">La fea más bella</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109110000 -0500" stop="20261109120000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Elif</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109120000 -0500" stop="20261109130000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Telediario - Vespertino</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109130000 -0500" stop="20261109140000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Desiguales</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109140000 -0500" stop="20261109150000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Mujer, casos de la vida real</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109150000 -0500" stop="20261109160000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Cuando los ángeles caen</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109160000 -0500" stop="20261109170000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Destilando amor</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109170000 -0500" stop="20261109180000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">María, la del barrio</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109180000 -0500" stop="20261109183000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">El Chapulín Colorado</title>
+    <category lang="es">Programa</category>
+    <icon src="https://imagenes.gatotv.com/categorias/programas/miniatura/el_chapulin_colorado.jpg" />
+  </programme>
+  <programme start="20261109183000 -0500" stop="20261109190000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">El Chavo del Ocho</title>
+    <category lang="es">Programa</category>
+    <icon src="https://imagenes.gatotv.com/categorias/programas/miniatura/el_chavo_del_ocho.jpg" />
+  </programme>
+  <programme start="20261109190000 -0500" stop="20261109203000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Telediario - Nocturno</title>
+    <category lang="es">Noticiero / Información</category>
+  </programme>
+  <programme start="20261109203000 -0500" stop="20261109210000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Los Picapiedra</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109210000 -0500" stop="20261109220000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">A-Team</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109220000 -0500" stop="20261109230000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Pablo Escobar El patrón del mal</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109230000 -0500" stop="20261110000000 -0500" channel="3_de_guatemala.gatotv.com">
+    <title lang="es">Fear the Walking Dead</title>
+    <category lang="es">Programa</category>
+    <icon src="https://imagenes.gatotv.com/categorias/programas/miniatura/fear_the_walking_dead.jpg" />
+  </programme>
+</tv>

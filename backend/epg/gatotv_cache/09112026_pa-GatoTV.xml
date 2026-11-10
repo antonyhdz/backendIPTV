@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="2_de_panama.gatotv.com">
+    <display-name lang="es">PA - GatoTV - 2 de Panamá</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/2_de_panama-mediano.png" />
+  </channel>
+  <programme start="20261108230000 -0500" stop="20261109030000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109030000 -0500" stop="20261109070000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109070000 -0500" stop="20261109110000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109110000 -0500" stop="20261109150000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109150000 -0500" stop="20261109190000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109190000 -0500" stop="20261109230000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109230000 -0500" stop="20261110030000 -0500" channel="2_de_panama.gatotv.com">
+    <title lang="es">TVN 2</title>
+    <category lang="es">Programa</category>
+  </programme>
+</tv>

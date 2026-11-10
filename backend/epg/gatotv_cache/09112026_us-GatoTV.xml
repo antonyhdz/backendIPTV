@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tv source-info-name="GatoTV" source-info-url="https://www.gatotv.com" generator-info-name="GatoTV EPG Python Multi-Country">
+  <channel id="bein_sport_en_espanol.gatotv.com">
+    <display-name lang="es">US - GatoTV - beIN Sports en Español</display-name>
+    <icon src="https://imagenes.gatotv.com/logos/canales/oscuros/being_sports_en_espanol-mediano.png" />
+  </channel>
+  <programme start="20261109000000 -0500" stop="20261109020000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Premier Padel Tennis</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109020000 -0500" stop="20261109023000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109023000 -0500" stop="20261109030000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109030000 -0500" stop="20261109033000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109033000 -0500" stop="20261109040000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109040000 -0500" stop="20261109043000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109043000 -0500" stop="20261109050000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109050000 -0500" stop="20261109053000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109053000 -0500" stop="20261109060000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109060000 -0500" stop="20261109070000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">The Xtra</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109070000 -0500" stop="20261109073000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109073000 -0500" stop="20261109090000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">SailGP</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109090000 -0500" stop="20261109093000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Ligue 1 2026-27: Lens vs. Marseille</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109093000 -0500" stop="20261109100000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Programa Pagado</title>
+    <category lang="es">Programa</category>
+  </programme>
+  <programme start="20261109100000 -0500" stop="20261109120000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Premier Padel Tennis</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109120000 -0500" stop="20261109140000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Estrela da Amadora vs. Benfica</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109140000 -0500" stop="20261109160000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Galatasaray vs. Amed SK</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109160000 -0500" stop="20261109170000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">The Xtra</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109170000 -0500" stop="20261109180000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Footvolley</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109180000 -0500" stop="20261109190000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Pro Footvolley Tour</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109190000 -0500" stop="20261109210000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Lens vs. Olympique de Marsella</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109210000 -0500" stop="20261109220000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">The Xtra</title>
+    <category lang="es">Deportes</category>
+  </programme>
+  <programme start="20261109220000 -0500" stop="20261110000000 -0500" channel="bein_sport_en_espanol.gatotv.com">
+    <title lang="es">Premier Padel Tennis</title>
+    <category lang="es">Deportes</category>
+  </programme>
+</tv>
