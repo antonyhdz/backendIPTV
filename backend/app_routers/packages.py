@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
@@ -19,8 +20,16 @@ def package_response(package: Package, db: Session) -> dict:
     assignments = db.scalars(
         select(PackageChannel).where(PackageChannel.package_id == package.id)
     ).all()
+
     channel_ids = [assignment.channel_id for assignment in assignments]
-    channels = db.scalars(select(Channel).where(Channel.id.in_(channel_ids))).all() if channel_ids else []
+
+    channels = (
+        db.scalars(
+            select(Channel).where(Channel.id.in_(channel_ids))
+        ).all()
+        if channel_ids else []
+    )
+
     return {
         "id": package.id,
         "name": package.name,
@@ -28,8 +37,15 @@ def package_response(package: Package, db: Session) -> dict:
         "price_cents": package.price_cents,
         "active": package.active,
         "channel_ids": channel_ids,
-        "channels": [{"id": channel.id, "name": channel.name} for channel in channels],
-        "created_at": package.created_at.isoformat(),
+        "channels": [
+            {"id": channel.id, "name": channel.name}
+            for channel in channels
+        ],
+        "created_at": (
+            package.created_at.isoformat()
+            if package.created_at is not None
+            else None
+        ),
     }
 
 
@@ -43,7 +59,7 @@ def list_packages(
     ).all()
 
     return {
-        "packages": [package_response(p, db) for p in packages]
+        "packages": [package_response(package, db) for package in packages]
     }
 
 
@@ -65,9 +81,15 @@ def create_package(
             detail="Ya existe un paquete con ese nombre.",
         )
 
-    channels = db.scalars(select(Channel).where(Channel.id.in_(data.channel_ids))).all()
+    channels = db.scalars(
+        select(Channel).where(Channel.id.in_(data.channel_ids))
+    ).all()
+
     if len({channel.id for channel in channels}) != len(set(data.channel_ids)):
-        raise HTTPException(status_code=404, detail="Uno o más canales seleccionados no existen.")
+        raise HTTPException(
+            status_code=404,
+            detail="Uno o más canales seleccionados no existen.",
+        )
 
     package = Package(
         name=name,
@@ -78,8 +100,12 @@ def create_package(
 
     db.add(package)
     db.flush()
+
     db.add_all([
-        PackageChannel(package_id=package.id, channel_id=channel.id)
+        PackageChannel(
+            package_id=package.id,
+            channel_id=channel.id
+        )
         for channel in channels
     ])
 
@@ -104,23 +130,44 @@ def update_package_channels(
     db: Session = Depends(get_db),
 ):
     package = db.get(Package, package_id)
+
     if package is None:
-        raise HTTPException(status_code=404, detail="Paquete no encontrado.")
+        raise HTTPException(
+            status_code=404,
+            detail="Paquete no encontrado.",
+        )
 
     channel_ids = set(data.channel_ids)
-    if not channel_ids:
-        raise HTTPException(status_code=422, detail="Selecciona al menos un canal para el paquete.")
-    channels = db.scalars(select(Channel).where(Channel.id.in_(channel_ids))).all()
-    if len(channels) != len(channel_ids):
-        raise HTTPException(status_code=404, detail="Uno o más canales seleccionados no existen.")
 
-    db.query(PackageChannel).filter(PackageChannel.package_id == package.id).delete(synchronize_session=False)
+    if not channel_ids:
+        raise HTTPException(
+            status_code=422,
+            detail="Selecciona al menos un canal para el paquete.",
+        )
+
+    channels = db.scalars(
+        select(Channel).where(Channel.id.in_(channel_ids))
+    ).all()
+
+    if len(channels) != len(channel_ids):
+        raise HTTPException(
+            status_code=404,
+            detail="Uno o más canales seleccionados no existen.",
+        )
+
+    db.query(PackageChannel).filter(
+        PackageChannel.package_id == package.id
+    ).delete(synchronize_session=False)
+
     db.add_all([
-        PackageChannel(package_id=package.id, channel_id=channel.id)
+        PackageChannel(
+            package_id=package.id,
+            channel_id=channel.id
+        )
         for channel in channels
     ])
+
     db.commit()
     db.refresh(package)
+
     return package_response(package, db)
-
-
