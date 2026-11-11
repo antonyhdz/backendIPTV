@@ -1,3 +1,4 @@
+
 import sys
 from pathlib import Path
 
@@ -21,8 +22,7 @@ from backend.app_mongo import init_mongo_indexes
 from backend.app_models import User, Package, Subscription, Channel
 from backend.app_security import hash_password
 
-from backend.app_routers import auth, account, channels, packages, customers, admin, backups, events
-from backend.app_services.backup_service import run_backup_scheduler
+from backend.app_routers import auth, account, channels, packages, customers, admin, events
 
 
 @asynccontextmanager
@@ -57,7 +57,7 @@ async def lifespan(app: FastAPI):
                 "tvg_logo": "TEXT NOT NULL DEFAULT ''",
                 "tvg_country": "TEXT NOT NULL DEFAULT ''",
                 "tvg_language": "TEXT NOT NULL DEFAULT ''",
-                "tvg_chno": "TEXT NOT NULL DEFAULT ''",
+                "tvg_chno": "TEXT NOT NULL DEFAULT '',
             }
             for column_name, column_type in channel_metadata_columns.items():
                 if column_name not in channel_columns:
@@ -115,13 +115,12 @@ async def lifespan(app: FastAPI):
 
     print("Base de datos inicializada.")
     channel_monitor_task = asyncio.create_task(channels.run_channel_monitor())
-    backup_scheduler_task = asyncio.create_task(run_backup_scheduler())
+
     try:
         yield
     finally:
-        for task in (channel_monitor_task, backup_scheduler_task):
-            task.cancel()
-        await asyncio.gather(channel_monitor_task, backup_scheduler_task, return_exceptions=True)
+        channel_monitor_task.cancel()
+        await asyncio.gather(channel_monitor_task, return_exceptions=True)
 
 
 app = FastAPI(
@@ -149,7 +148,6 @@ app.include_router(customers.router)
 app.include_router(customers.client_router)
 app.include_router(events.router)
 app.include_router(admin.router)
-app.include_router(backups.router)
 
 
 @app.get("/", tags=["Sistema"], include_in_schema=False)
@@ -170,9 +168,3 @@ def system_status():
 @app.get("/api/v1/health", tags=["Sistema"])
 def health():
     return {"status": "ok"}
-
-
-
-
-
-
