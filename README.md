@@ -13,11 +13,21 @@ python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 
 La API queda disponible en `http://127.0.0.1:8000`; la documentación interactiva está en `/docs`.
 
+Copia `.env.example` a `.env` y configura MongoDB, `JWT_SECRET` y la contraseña inicial del administrador antes de arrancar. El primer administrador se crea al iniciar la API si todavía no existe. Los demás usuarios se crean desde `POST /api/v1/admin/users` con un JWT de administrador.
+
+## Login
+
+- `POST /api/v1/auth/login` recibe `username` y `password`, y devuelve un JWT de acceso de corta duración.
+- Envía el token en `Authorization: Bearer <token>`.
+- `GET /api/v1/auth/me` devuelve la identidad autenticada.
+- Las contraseñas se guardan con Argon2id. El registro público está desactivado.
+
 ## Desplegar en Railway
 
 1. Crea un servicio de Railway conectado a este repositorio.
 2. Deja **Root Directory** como `/`.
 3. Railway detecta `requirements.txt`, instala FastAPI y Uvicorn, y usa el comando de `railway.json` para iniciar la app con el puerto dinámico `$PORT`.
-4. El health check consulta `/api/v1/health`.
+4. Configura en **Variables** `MONGODB_URI`, `MONGODB_DB_NAME`, `JWT_SECRET`, `INITIAL_ADMIN_USERNAME`, `INITIAL_ADMIN_PASSWORD` y, si usas panel web, `ALLOWED_ORIGINS`.
+5. El health check consulta `/api/v1/health`.
 
-No se requieren variables de entorno para esta base inicial.
+Usa una contraseña inicial única y guárdala de forma segura. `JWT_SECRET` debe ser aleatorio y tener al menos 32 caracteres.
