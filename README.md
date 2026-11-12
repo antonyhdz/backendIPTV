@@ -21,6 +21,8 @@ Copia `.env.example` a `.env` y configura MongoDB, `JWT_SECRET` y la contraseña
 - Envía el token en `Authorization: Bearer <token>`.
 - `GET /api/v1/auth/me` devuelve la identidad autenticada.
 - Las contraseñas se guardan con Argon2id. El registro público está desactivado.
+- Guía detallada del flujo, rutas, configuración de FlutterFlow y solución de errores: [`backend/AUTH.md`](backend/AUTH.md).
+- Actualiza esa guía junto con cada cambio del sistema de autenticación.
 
 ## Desplegar en Railway
 
