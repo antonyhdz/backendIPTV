@@ -4,15 +4,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo.errors import DuplicateKeyError
 
-from backend.config import settings
+from backend.config import settings as app_settings
 from backend.database import close_database, connect_database
-from backend.routers import auth, channels, customers, dashboard, packages, settings, users
+from backend.routers import auth, channels, customers, dashboard, packages, settings as settings_router, users
 from backend.security import hash_password
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    settings.validate()
+    app_settings.validate()
     database = connect_database()
     try:
         database.users.create_index("username", unique=True, name="uq_users_username")
@@ -27,11 +27,11 @@ async def lifespan(_: FastAPI):
         database.subscriptions.create_index([("expires_at", 1)], name="ix_subscriptions_expires_at")
         database.subscriptions.create_index([("customer_id", 1), ("expires_at", -1)], name="ix_subscriptions_customer_expiry")
 
-        admin = database.users.find_one({"username": settings.initial_admin_username})
+        admin = database.users.find_one({"username": app_settings.initial_admin_username})
         if admin is None:
             admin_document = {
-                "username": settings.initial_admin_username,
-                "password_hash": hash_password(settings.initial_admin_password),
+                "username": app_settings.initial_admin_username,
+                "password_hash": hash_password(app_settings.initial_admin_password),
                 "role": "admin",
                 "is_active": True,
             }
@@ -39,7 +39,7 @@ async def lifespan(_: FastAPI):
                 database.users.insert_one(admin_document)
             except DuplicateKeyError:
                 pass
-            admin = database.users.find_one({"username": settings.initial_admin_username})
+            admin = database.users.find_one({"username": app_settings.initial_admin_username})
 
         if admin is None or admin.get("role") != "admin":
             raise RuntimeError("INITIAL_ADMIN_USERNAME is already assigned to a non-admin account.")
@@ -56,10 +56,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-if settings.allowed_origins:
+if app_settings.allowed_origins:
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=list(settings.allowed_origins),
+        allow_origins=list(app_settings.allowed_origins),
         allow_credentials=False,
         allow_methods=["GET", "POST", "OPTIONS"],
         allow_headers=["Authorization", "Content-Type"],
@@ -71,7 +71,7 @@ app.include_router(dashboard.router)
 app.include_router(customers.router)
 app.include_router(channels.router)
 app.include_router(packages.router)
-app.include_router(settings.router)
+app.include_router(settings_router.router)
 
 
 @app.get("/", tags=["Sistema"])
