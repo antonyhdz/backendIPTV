@@ -42,6 +42,32 @@ def get_current_user(
     return user
 
 
+def get_current_customer(
+    credentials: HTTPAuthorizationCredentials | None = Depends(_bearer),
+    database: Database = Depends(database_dependency),
+) -> dict:
+    if credentials is None:
+        raise unauthorized()
+    try:
+        claims = decode_access_token(credentials.credentials)
+        if claims.get("role") != "customer" or not claims.get("device_uuid"):
+            raise unauthorized()
+        customer_id = ObjectId(claims["sub"])
+    except (jwt.InvalidTokenError, KeyError, TypeError, ValueError):
+        raise unauthorized()
+
+    customer = database.customers.find_one(
+        {
+            "_id": customer_id,
+            "is_active": True,
+            "devices.device_uuid": claims["device_uuid"],
+        }
+    )
+    if customer is None:
+        raise unauthorized()
+    return customer
+
+
 def require_admin(user: dict = Depends(get_current_user)) -> dict:
     if user.get("role") != "admin":
         raise HTTPException(

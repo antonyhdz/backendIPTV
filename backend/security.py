@@ -25,7 +25,9 @@ def verify_password(password: str, encoded_hash: str | None) -> bool:
     return verified
 
 
-def create_access_token(user_id: str, username: str, role: str) -> tuple[str, int]:
+def create_access_token(
+    user_id: str, username: str, role: str, device_uuid: str | None = None
+) -> tuple[str, int]:
     now = datetime.now(timezone.utc)
     expires_in = settings.jwt_expiration_minutes * 60
     payload = {
@@ -36,6 +38,8 @@ def create_access_token(user_id: str, username: str, role: str) -> tuple[str, in
         "iat": now,
         "exp": now + timedelta(seconds=expires_in),
     }
+    if device_uuid is not None:
+        payload["device_uuid"] = device_uuid
     token = jwt.encode(payload, settings.jwt_secret, algorithm="HS256")
     return token, expires_in
 

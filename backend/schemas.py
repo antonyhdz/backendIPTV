@@ -1,6 +1,7 @@
 from typing import Literal
 
 from datetime import datetime
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -47,9 +48,16 @@ class TokenResponse(BaseModel):
 
 class CustomerCreate(BaseModel):
     name: str = Field(min_length=1, max_length=120)
+    username: str = Field(min_length=3, max_length=80, pattern=r"^[a-zA-Z0-9_.-]+$")
+    password: str = Field(min_length=12, max_length=128)
     email: str | None = Field(default=None, max_length=254)
     phone: str | None = Field(default=None, max_length=40)
     notes: str | None = Field(default=None, max_length=2000)
+
+    @field_validator("username")
+    @classmethod
+    def normalize_username(cls, value: str) -> str:
+        return value.strip().lower()
 
     @field_validator("name", "email", "phone", "notes")
     @classmethod
@@ -59,10 +67,12 @@ class CustomerCreate(BaseModel):
 
 class CustomerUpdate(BaseModel):
     name: str | None = Field(default=None, min_length=1, max_length=120)
+    username: str | None = Field(default=None, min_length=3, max_length=80, pattern=r"^[a-zA-Z0-9_.-]+$")
     email: str | None = Field(default=None, max_length=254)
     phone: str | None = Field(default=None, max_length=40)
     notes: str | None = Field(default=None, max_length=2000)
     is_active: bool | None = None
+    max_devices: int | None = Field(default=None, ge=1, le=4)
 
     @model_validator(mode="before")
     @classmethod
@@ -70,9 +80,19 @@ class CustomerUpdate(BaseModel):
         if isinstance(value, dict):
             if not value:
                 raise ValueError("Provide at least one field to update.")
-            if any(item is None for key, item in value.items() if key in {"name", "is_active"}):
-                raise ValueError("name and is_active cannot be null.")
+            if any(item is None for key, item in value.items() if key in {"name", "username", "email", "is_active", "max_devices"}):
+                raise ValueError("name, username, email, is_active and max_devices cannot be null.")
         return value
+
+    @field_validator("username")
+    @classmethod
+    def normalize_username(cls, value: str | None) -> str | None:
+        return value.strip().lower() if value else value
+
+    @field_validator("email")
+    @classmethod
+    def normalize_email(cls, value: str | None) -> str | None:
+        return value.strip().lower() if value else value
 
     @field_validator("name", "email", "phone", "notes")
     @classmethod
@@ -186,6 +206,37 @@ class SubscriptionCreate(BaseModel):
         if value is not None and value.tzinfo is None:
             raise ValueError("starts_at must include a timezone, preferably UTC.")
         return value
+
+
+class CustomerPasswordUpdate(BaseModel):
+    password: str = Field(min_length=12, max_length=128)
+
+
+class MobileLoginRequest(BaseModel):
+    username: str = Field(min_length=3, max_length=80)
+    password: str = Field(min_length=1, max_length=128)
+    device_uuid: UUID
+    device_name: str | None = Field(default=None, max_length=80)
+
+    @field_validator("username")
+    @classmethod
+    def normalize_username(cls, value: str) -> str:
+        return value.strip().lower()
+
+    @field_validator("device_name")
+    @classmethod
+    def normalize_device_name(cls, value: str | None) -> str | None:
+        return value.strip() if value else value
+
+
+class MobileTokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    expires_in: int
+    user: UserResponse
+    device_uuid: str
+    registered_devices: int
+    max_devices: int
 
 
 class AppSettingsUpdate(BaseModel):

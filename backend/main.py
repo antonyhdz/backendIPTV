@@ -6,7 +6,7 @@ from pymongo.errors import DuplicateKeyError
 
 from backend.config import settings as app_settings
 from backend.database import close_database, connect_database
-from backend.routers import auth, channels, customers, dashboard, packages, settings as settings_router, users
+from backend.routers import auth, channels, customers, dashboard, mobile_auth, packages, settings as settings_router, users
 from backend.security import hash_password
 
 
@@ -20,7 +20,14 @@ async def lifespan(_: FastAPI):
         database.auth_attempts.create_index(
             "expires_at", expireAfterSeconds=0, name="ttl_auth_attempts"
         )
+        # Keep optional sparse email indexing compatible with older documents
+        # that stored an explicit null instead of omitting the field.
+        database.customers.update_many({"email": None}, {"$unset": {"email": ""}})
         database.customers.create_index("email", unique=True, sparse=True, name="uq_customers_email")
+        database.customers.create_index("username", unique=True, sparse=True, name="uq_customers_username")
+        database.customers.create_index(
+            "devices.device_uuid", unique=True, sparse=True, name="uq_customer_device_uuid"
+        )
         database.customers.create_index([("created_at", -1)], name="ix_customers_created_at")
         database.channels.create_index("name", unique=True, name="uq_channels_name")
         database.packages.create_index("name", unique=True, name="uq_packages_name")
@@ -66,6 +73,7 @@ if app_settings.allowed_origins:
     )
 
 app.include_router(auth.router)
+app.include_router(mobile_auth.router)
 app.include_router(users.router)
 app.include_router(dashboard.router)
 app.include_router(customers.router)

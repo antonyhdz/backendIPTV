@@ -23,6 +23,7 @@ Copia `.env.example` a `.env` y configura MongoDB, `JWT_SECRET` y la contraseña
 - Las contraseñas se guardan con Argon2id. El registro público está desactivado.
 - Guía detallada del flujo, rutas, configuración de FlutterFlow y solución de errores: [`backend/AUTH.md`](backend/AUTH.md).
 - Actualiza esa guía junto con cada cambio del sistema de autenticación.
+- El login del cliente móvil usa rutas y cuentas separadas del panel; límites por UUID/dispositivo y paquetes asociados se documentan en [`backend/MANAGEMENT.md`](backend/MANAGEMENT.md).
 
 ## Clientes, catálogo y dashboard
 

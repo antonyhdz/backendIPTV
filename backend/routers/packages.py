@@ -84,7 +84,7 @@ def create_subscription(data: SubscriptionCreate, database: Database = Depends(d
 
 
 @router.get("/subscriptions")
-def list_subscriptions(page: int = Query(1, ge=1), page_size: int = Query(25, ge=1, le=100), state: str = Query("all", pattern="^(all|active|expired|expiring)$"), database: Database = Depends(database_dependency), _: dict = Depends(require_admin)):
+def list_subscriptions(page: int = Query(1, ge=1), page_size: int = Query(25, ge=1, le=100), state: str = Query("all", pattern="^(all|active|expired|expiring)$"), customer_id: str | None = None, database: Database = Depends(database_dependency), _: dict = Depends(require_admin)):
     now = datetime.now(timezone.utc)
     filters = {}
     if state == "active":
@@ -93,6 +93,11 @@ def list_subscriptions(page: int = Query(1, ge=1), page_size: int = Query(25, ge
         filters["expires_at"] = {"$lte": now}
     elif state == "expiring":
         filters["expires_at"] = {"$gt": now, "$lte": now + timedelta(days=7)}
+    if customer_id:
+        object_id = valid_object_id(customer_id)
+        if object_id is None:
+            raise HTTPException(status_code=422, detail="customer_id must be a valid ID.")
+        filters["customer_id"] = object_id
     result = paginated(database.subscriptions, filters, page, page_size, [("expires_at", ASCENDING)])
     items = []
     for item in result["items"]:

@@ -7,10 +7,13 @@ def serialize_customer(document: dict) -> dict:
     return {
         "id": str(document["_id"]),
         "name": document["name"],
+        "username": document.get("username"),
         "email": document.get("email"),
         "phone": document.get("phone"),
         "notes": document.get("notes"),
         "is_active": document["is_active"],
+        "max_devices": document.get("max_devices", 1),
+        "devices": document.get("devices", []),
         "created_at": document["created_at"],
         "updated_at": document["updated_at"],
     }
