@@ -216,6 +216,7 @@ class MobileLoginRequest(BaseModel):
     username: str = Field(min_length=3, max_length=80)
     password: str = Field(min_length=1, max_length=128)
     device_uuid: UUID
+    device_type: Literal["mobile", "tablet", "tv", "box", "desktop"]
     device_name: str | None = Field(default=None, max_length=80)
 
     @field_validator("username")
@@ -235,6 +236,7 @@ class MobileTokenResponse(BaseModel):
     expires_in: int
     user: UserResponse
     device_uuid: str
+    device_type: Literal["mobile", "tablet", "tv", "box", "desktop"]
     registered_devices: int
     max_devices: int
 

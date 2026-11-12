@@ -44,7 +44,7 @@ Actualiza `name`, `username`, `email`, `phone`, `notes`, `is_active` y/o `max_de
 
 ### Dispositivos asociados y revocación
 
-El cliente listado incluye `max_devices` y `devices`, que contiene el UUID, nombre opcional, fecha de asociación y último uso. Revoca un dispositivo con `DELETE /api/v1/admin/customers/{customer_id}/devices/{device_uuid}`. La revocación invalida inmediatamente los tokens emitidos para ese dispositivo.
+El cliente listado incluye `max_devices` y `devices`, que contiene el UUID, tipo, nombre opcional, fecha de asociación y último uso. Revoca un dispositivo con `DELETE /api/v1/admin/customers/{customer_id}/devices/{device_uuid}`. La revocación invalida inmediatamente los tokens emitidos para ese dispositivo.
 
 El límite se configura por cuenta. Cada móvil presenta un UUID al autenticarse; los UUID nuevos se asocian si hay espacio. Un UUID ya asociado puede volver a iniciar sesión sin ocupar otra plaza. El panel puede establecer cualquier límite de 1 a 4 por cliente.
 
@@ -61,11 +61,12 @@ Body JSON:
   "username": "cliente01",
   "password": "Una-clave-larga-y-unica",
   "device_uuid": "b2fb766d-7fb5-4e3d-93e1-663aa52b6201",
+  "device_type": "mobile",
   "device_name": "Android de Juan"
 }
 ```
 
-`device_uuid` debe ser un UUID válido. La app móvil debe generar uno por instalación/dispositivo y persistirlo para reutilizarlo en futuros inicios de sesión; no generar uno nuevo en cada login. El UUID solo puede asociarse a una cuenta a la vez. La respuesta `200` incluye `access_token`, `user`, `device_uuid`, `registered_devices` y `max_devices`. Los intentos fallidos se limitan por username e IP (8 fallos bloquean 10 minutos). Credenciales inválidas dan `401`; una cuenta sin plazas para un UUID nuevo da `409` con `detail: "device_limit_reached"`; si el UUID ya pertenece a otro cliente, da `409` con `detail: "device_already_linked"`.
+`device_uuid` debe ser un UUID válido. `device_type` es obligatorio y acepta únicamente `mobile`, `tablet`, `tv`, `box` o `desktop`. La app debe informar el tipo correspondiente al dispositivo. Debe generar un UUID por instalación/dispositivo y persistirlo para reutilizarlo en futuros inicios de sesión; no generar uno nuevo en cada login. El UUID solo puede asociarse a una cuenta a la vez. La respuesta `200` incluye `access_token`, `user`, `device_uuid`, `device_type`, `registered_devices` y `max_devices`. Los intentos fallidos se limitan por username e IP (8 fallos bloquean 10 minutos). Credenciales inválidas dan `401`; una cuenta sin plazas para un UUID nuevo da `409` con `detail: "device_limit_reached"`; si el UUID ya pertenece a otro cliente, da `409` con `detail: "device_already_linked"`; un tipo fuera de la lista devuelve `422`.
 
 ### Llamadas móviles autenticadas
 
@@ -79,7 +80,7 @@ En las llamadas siguientes, envía `Authorization: Bearer <access_token>`:
 
 Cada petición verifica que el token corresponda a un UUID todavía asociado y que la cuenta siga activa. Si el panel revoca el dispositivo, el token deja de funcionar inmediatamente. Los paquetes se consideran vigentes cuando `starts_at <= ahora < expires_at`.
 
-En FlutterFlow, define una API Call móvil `MobileLogin` con método POST, URL `/api/v1/mobile/auth/login`, `Content-Type: application/json` y variables `username`, `password`, `device_uuid` y `device_name`. En la app móvil, asigna username/password desde el formulario y el UUID persistido; no uses las constantes compartidas con el panel para las credenciales del cliente. Guarda `access_token` de forma persistente y pásalo como Bearer a las llamadas móviles autenticadas.
+En FlutterFlow, define una API Call móvil `MobileLogin` con método POST, URL `/api/v1/mobile/auth/login`, `Content-Type: application/json` y variables `username`, `password`, `device_uuid`, `device_type` y `device_name`. Envía `device_type` como uno de los cinco valores aceptados según la plataforma/dispositivo. Asigna username/password desde el formulario y el UUID persistido; no uses las constantes compartidas con el panel para las credenciales del cliente. Guarda `access_token` de forma persistente y pásalo como Bearer a las llamadas móviles autenticadas.
 
 El UUID sirve como identificador de control de cupos. Por sí solo no demuestra que el dispositivo sea hardware genuino: quien pueda copiar un UUID podría imitarlo, así que la app debe proteger el almacenamiento y no exponerlo en logs o enlaces.
 

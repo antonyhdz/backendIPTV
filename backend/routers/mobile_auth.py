@@ -15,7 +15,11 @@ router = APIRouter(prefix="/api/v1/mobile", tags=["Aplicación móvil de cliente
 
 
 def _register_or_touch_device(
-    database: Database, customer: dict, device_uuid: str, device_name: str | None
+    database: Database,
+    customer: dict,
+    device_uuid: str,
+    device_type: str,
+    device_name: str | None,
 ) -> int:
     now = datetime.now(timezone.utc)
     devices = customer.get("devices", [])
@@ -23,6 +27,7 @@ def _register_or_touch_device(
 
     if existing:
         fields = {"devices.$.last_seen": now}
+        fields["devices.$.device_type"] = device_type
         if device_name:
             fields["devices.$.device_name"] = device_name
         database.customers.update_one(
@@ -54,6 +59,7 @@ def _register_or_touch_device(
                 "$push": {
                     "devices": {
                         "device_uuid": device_uuid,
+                    "device_type": device_type,
                         "device_name": device_name,
                         "registered_at": now,
                         "last_seen": now,
@@ -73,6 +79,7 @@ def _register_or_touch_device(
     )
     if refreshed:
         fields = {"devices.$.last_seen": now}
+        fields["devices.$.device_type"] = device_type
         if device_name:
             fields["devices.$.device_name"] = device_name
         database.customers.update_one(
@@ -130,7 +137,7 @@ def mobile_login(
         )
 
     registered_devices = _register_or_touch_device(
-        database, customer, device_uuid, data.device_name
+        database, customer, device_uuid, data.device_type, data.device_name
     )
     database.auth_attempts.delete_one({"_id": attempt_key})
     token, expires_in = create_access_token(
@@ -147,6 +154,7 @@ def mobile_login(
             "is_active": True,
         },
         "device_uuid": device_uuid,
+        "device_type": data.device_type,
         "registered_devices": registered_devices,
         "max_devices": customer.get("max_devices", 1),
     }
