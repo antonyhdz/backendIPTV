@@ -24,6 +24,11 @@ Copia `.env.example` a `.env` y configura MongoDB, `JWT_SECRET` y la contraseña
 - Guía detallada del flujo, rutas, configuración de FlutterFlow y solución de errores: [`backend/AUTH.md`](backend/AUTH.md).
 - Actualiza esa guía junto con cada cambio del sistema de autenticación.
 
+## Clientes, catálogo y dashboard
+
+- Guía de clientes, canales, paquetes con vencimiento, endpoints de administración y dashboard: [`backend/MANAGEMENT.md`](backend/MANAGEMENT.md).
+- Mantén esta documentación al día en el mismo cambio que agregue o modifique estas funciones.
+
 ## Desplegar en Railway
 
 1. Crea un servicio de Railway conectado a este repositorio.

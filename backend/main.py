@@ -6,7 +6,7 @@ from pymongo.errors import DuplicateKeyError
 
 from backend.config import settings
 from backend.database import close_database, connect_database
-from backend.routers import auth, users
+from backend.routers import auth, management, users
 from backend.security import hash_password
 
 
@@ -20,6 +20,12 @@ async def lifespan(_: FastAPI):
         database.auth_attempts.create_index(
             "expires_at", expireAfterSeconds=0, name="ttl_auth_attempts"
         )
+        database.customers.create_index("email", unique=True, sparse=True, name="uq_customers_email")
+        database.customers.create_index([("created_at", -1)], name="ix_customers_created_at")
+        database.channels.create_index("name", unique=True, name="uq_channels_name")
+        database.packages.create_index("name", unique=True, name="uq_packages_name")
+        database.subscriptions.create_index([("expires_at", 1)], name="ix_subscriptions_expires_at")
+        database.subscriptions.create_index([("customer_id", 1), ("expires_at", -1)], name="ix_subscriptions_customer_expiry")
 
         admin = database.users.find_one({"username": settings.initial_admin_username})
         if admin is None:
@@ -61,6 +67,7 @@ if settings.allowed_origins:
 
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(management.router)
 
 
 @app.get("/", tags=["Sistema"])
