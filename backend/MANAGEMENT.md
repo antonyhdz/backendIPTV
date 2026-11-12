@@ -127,6 +127,52 @@ Devuelve datos agregados en una sola llamada, sin listas completas:
 
 En FlutterFlow, configura una API Call GET a `/api/v1/admin/dashboard`, añade el header Authorization y asigna `Bearer <App State access_token>`. Los valores de tarjetas se leen de `customers.total`, `subscriptions.active`, `subscriptions.expiring_in_7_days`, etc. Define JSON Paths `$.customers.total`, `$.subscriptions.active`, `$.subscriptions.expiring_in_7_days`, `$.catalog.active_channels` y `$.expiring_soon` según los widgets. Llama al endpoint al entrar al dashboard y usa sus resultados para las tarjetas y la tabla de próximos vencimientos.
 
+## Configuración de la aplicación
+
+### `GET /api/v1/admin/settings`
+
+Devuelve la configuración comercial que puede mostrarse en el dashboard o editarse desde la sección Configuración. No expone secretos de Railway ni parámetros internos de infraestructura.
+
+```json
+{
+  "company_name": "Patzi IPTV",
+  "support_email": "",
+  "support_phone": "",
+  "currency": "USD",
+  "timezone": "America/El_Salvador"
+}
+```
+
+### `PATCH /api/v1/admin/settings`
+
+Envía uno o más campos para actualizar:
+
+```json
+{
+  "company_name": "Patzi IPTV",
+  "support_email": "soporte@example.com",
+  "support_phone": "+503 7000 0000",
+  "currency": "USD",
+  "timezone": "America/El_Salvador"
+}
+```
+
+La moneda usa un código de tres letras mayúsculas (por ejemplo `USD`); la zona horaria debe ser un nombre IANA válido. La configuración se guarda en MongoDB (`app_settings`, documento `main`). Los valores predeterminados se usan mientras no se haya guardado un valor. El endpoint requiere administrador.
+
+## Organización del backend por pantalla/dominio
+
+Los archivos de FlutterFlow contienen las pantallas visuales. En este repositorio, los routers organizan la API que consume cada pantalla:
+
+| Pantalla/dominio | Archivo backend | Rutas |
+| --- | --- | --- |
+| Dashboard | `backend/routers/dashboard.py` | `GET /api/v1/admin/dashboard` |
+| Clientes | `backend/routers/customers.py` | `GET/POST /api/v1/admin/customers`, `PATCH /api/v1/admin/customers/{id}` |
+| Canales | `backend/routers/channels.py` | `GET/POST /api/v1/admin/channels`, `PATCH /api/v1/admin/channels/{id}` |
+| Paquetes y vencimientos | `backend/routers/packages.py` | `/api/v1/admin/packages`, `/api/v1/admin/subscriptions` |
+| Configuración | `backend/routers/settings.py` | `GET/PATCH /api/v1/admin/settings` |
+
+Los serializers y la paginación compartida están en `backend/routers/management_helpers.py`. Los routers se registran en `backend/main.py`; mantén esa conexión y esta tabla actualizadas al agregar una pantalla o dominio.
+
 ## Índices MongoDB
 
 Al iniciar, la API crea índices únicos para email no vacío, nombre de canal y nombre de paquete, además de índices para ordenar/buscar vencimientos y clientes recientes. No se requiere script manual de migración.

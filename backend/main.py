@@ -6,7 +6,7 @@ from pymongo.errors import DuplicateKeyError
 
 from backend.config import settings
 from backend.database import close_database, connect_database
-from backend.routers import auth, management, users
+from backend.routers import auth, channels, customers, dashboard, packages, settings, users
 from backend.security import hash_password
 
 
@@ -67,7 +67,11 @@ if settings.allowed_origins:
 
 app.include_router(auth.router)
 app.include_router(users.router)
-app.include_router(management.router)
+app.include_router(dashboard.router)
+app.include_router(customers.router)
+app.include_router(channels.router)
+app.include_router(packages.router)
+app.include_router(settings.router)
 
 
 @app.get("/", tags=["Sistema"])

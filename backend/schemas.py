@@ -186,3 +186,37 @@ class SubscriptionCreate(BaseModel):
         if value is not None and value.tzinfo is None:
             raise ValueError("starts_at must include a timezone, preferably UTC.")
         return value
+
+
+class AppSettingsUpdate(BaseModel):
+    company_name: str | None = Field(default=None, min_length=1, max_length=120)
+    support_email: str | None = Field(default=None, max_length=254)
+    support_phone: str | None = Field(default=None, max_length=40)
+    currency: str | None = Field(default=None, min_length=3, max_length=3, pattern=r"^[A-Z]{3}$")
+    timezone: str | None = Field(default=None, min_length=1, max_length=80)
+
+    @model_validator(mode="before")
+    @classmethod
+    def validate_settings(cls, value):
+        if isinstance(value, dict) and not value:
+            raise ValueError("Provide at least one setting to update.")
+        if isinstance(value, dict) and any(item is None for item in value.values()):
+            raise ValueError("Settings cannot be null; use an empty string to clear contact fields.")
+        return value
+
+    @field_validator("company_name", "support_email", "support_phone", "currency", "timezone")
+    @classmethod
+    def strip_setting(cls, value: str | None) -> str | None:
+        return value.strip() if value else value
+
+    @field_validator("timezone")
+    @classmethod
+    def validate_timezone(cls, value: str | None) -> str | None:
+        if value:
+            from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+            try:
+                ZoneInfo(value)
+            except ZoneInfoNotFoundError as exc:
+                raise ValueError("timezone must be a valid IANA timezone.") from exc
+        return value

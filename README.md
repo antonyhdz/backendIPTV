@@ -29,6 +29,8 @@ Copia `.env.example` a `.env` y configura MongoDB, `JWT_SECRET` y la contraseña
 - Guía de clientes, canales, paquetes con vencimiento, endpoints de administración y dashboard: [`backend/MANAGEMENT.md`](backend/MANAGEMENT.md).
 - Mantén esta documentación al día en el mismo cambio que agregue o modifique estas funciones.
 
+El backend organiza sus routers por pantalla/dominio en `backend/routers/`: `dashboard.py`, `customers.py`, `channels.py`, `packages.py` y `settings.py`. Los archivos de interfaz de las pantallas se crean en FlutterFlow; cada API Call consume las rutas documentadas en `backend/MANAGEMENT.md`.
+
 ## Desplegar en Railway
 
 1. Crea un servicio de Railway conectado a este repositorio.
