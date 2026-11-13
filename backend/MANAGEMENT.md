@@ -99,7 +99,42 @@ Body: `name` y `stream_url` obligatorios; `category` y `logo_url` opcionales.
 }
 ```
 
-El nombre es único. Evita guardar URLs con credenciales privadas en el catálogo.
+La combinación exacta de nombre y URL es única; se permiten el mismo nombre con URLs distintas y varias entradas vacías. Evita guardar URLs con credenciales privadas en el catálogo.
+
+### Carga masiva desde playlist M3U/M3U8
+
+`POST /api/v1/admin/channels/import` recibe un archivo como `multipart/form-data`, con el campo `file`. Acepta extensiones `.m3u` y `.m3u8`, archivos UTF-8 (con o sin BOM) o Windows-1252, hasta 10 MB y 5,000 entradas. Requiere el JWT de administrador igual que el resto de rutas del panel.
+
+En FlutterFlow configura la API Call como `POST`, URL `/api/v1/admin/channels/import`, header `Authorization: Bearer <access_token>` y body de tipo **Multipart**. Añade el parámetro `file` como archivo cargado por el administrador. No fuerces manualmente el header `Content-Type`: el cliente debe incluir el boundary multipart automáticamente.
+
+Cada línea `#EXTINF` inicia una entrada. El texto después de la coma se guarda como `name`; las etiquetas se convierten a los siguientes campos:
+
+| Campo del panel / API | Atributo M3U |
+| --- | --- |
+| `name` | título después de la coma de `#EXTINF` |
+| `group_title` | `group-title` |
+| `stream_url` / `url` | línea URL siguiente a la entrada |
+| `tvg_id` | `tvg-id` |
+| `tvg_name` | `tvg-name` |
+| `tvg_chno` | `tvg-chno` |
+| `tvg_logo` | `tvg-logo` |
+| `tvg_country` | `tvg-country` |
+| `tvg_language` | `tvg-language` |
+| `tvg_shift` | `tvg-shift` |
+| `catchup` | `catchup` |
+| `catchup_days` | `catchup-days` |
+| `catchup_source` | `catchup-source` |
+| `tvg_type` | `tvg-type` |
+| `tvg_season` | `tvg-season` |
+| `tvg_episode` | `tvg-episode` |
+| `serie_title` | `serie-title` |
+| `tvg_tmdb` | `tvg-tmdb` |
+| `audio_track` | `audio-track` o `#EXTVLCOPT:audio-track=...` |
+| `aspect_ratio` | `aspect-ratio` o `#EXTVLCOPT:aspect-ratio=...` |
+
+Los atributos no presentes y los valores sin contenido se guardan como `""`. Si falta la URL de una entrada, también se conserva esa entrada con URL vacía. El sistema no infiere valores ni sustituye un campo por otro. En MongoDB se mantienen los alias compatibles: `url` junto con `stream_url`, `group_title` junto con `category`, y `tvg_logo` junto con `logo_url`.
+
+La respuesta contiene `total_entries`, `imported`, `skipped` y hasta 50 errores por número de entrada. Duplicados de la misma combinación `name` + URL se omiten y se reportan como `duplicate_channel`; las otras entradas del archivo se intentan insertar aunque alguna falle. Un archivo inválido responde `422`, extensión incorrecta `415`, archivo demasiado grande o con demasiadas entradas `413`.
 
 ### `GET /api/v1/admin/channels`
 
@@ -107,7 +142,7 @@ Parámetros: `page` (1), `page_size` (100, máximo 200), `active` opcional. Devu
 
 ### `PATCH /api/v1/admin/channels/{channel_id}`
 
-Actualiza `name`, `stream_url`, `category`, `logo_url` y/o `is_active`. Para retirar un canal sin romper los paquetes existentes, usa `is_active=false`.
+Actualiza `name`, `stream_url`, `category`, `logo_url`, cualquiera de los campos EPG/catch-up/VOD/reproductor listados arriba y/o `is_active`. Para retirar un canal sin romper los paquetes existentes, usa `is_active=false`.
 
 ## Paquetes
 
@@ -216,7 +251,7 @@ Los archivos de FlutterFlow contienen las pantallas visuales. En este repositori
 | Dashboard | `backend/routers/dashboard.py` | `GET /api/v1/admin/dashboard` |
 | Clientes y dispositivos | `backend/routers/customers.py` | CRUD parcial de clientes, reset de contraseña y revocación de dispositivos |
 | Login móvil | `backend/routers/mobile_auth.py` | Login y perfil/catálogos de la aplicación de clientes |
-| Canales | `backend/routers/channels.py` | `GET/POST /api/v1/admin/channels`, `PATCH /api/v1/admin/channels/{id}` |
+| Canales | `backend/routers/channels.py` | `GET/POST /api/v1/admin/channels`, `POST /api/v1/admin/channels/import`, `PATCH /api/v1/admin/channels/{id}` |
 | Paquetes y vencimientos | `backend/routers/packages.py` | `/api/v1/admin/packages`, `/api/v1/admin/subscriptions` |
 | Configuración | `backend/routers/settings.py` | `GET/PATCH /api/v1/admin/settings` |
 
@@ -224,7 +259,7 @@ Los serializers y la paginación compartida están en `backend/routers/managemen
 
 ## Índices MongoDB
 
-Al iniciar, la API crea índices únicos para username de panel, username de cliente, UUID de dispositivo entre clientes, email no vacío, nombre de canal y nombre de paquete, además de índices para ordenar/buscar vencimientos y clientes recientes. Los clientes existentes antes de habilitar login móvil no tienen username/hash y deben editarse en el panel: asignarles username y restablecer contraseña antes de poder iniciar sesión. No se requiere script manual de migración.
+Al iniciar, la API crea índices únicos para username de panel, username de cliente, UUID de dispositivo entre clientes, email no vacío, combinación de identidad de canal (nombre + URL) y nombre de paquete, además de índices para ordenar/buscar vencimientos y clientes recientes. También migra el índice antiguo de nombres de canal para permitir entradas sin nombre y distinguir canales con el mismo título pero URLs diferentes. Los clientes existentes antes de habilitar login móvil no tienen username/hash y deben editarse en el panel: asignarles username y restablecer contraseña antes de poder iniciar sesión. No se requiere script manual de migración.
 
 ## Errores
 

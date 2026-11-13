@@ -2,11 +2,12 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pymongo.errors import DuplicateKeyError
+from pymongo.errors import DuplicateKeyError, OperationFailure
 
 from backend.config import settings as app_settings
 from backend.database import close_database, connect_database
 from backend.routers import auth, channels, customers, dashboard, mobile_auth, packages, settings as settings_router, users
+from backend.routers.management_helpers import channel_identity
 from backend.security import hash_password
 
 
@@ -29,7 +30,26 @@ async def lifespan(_: FastAPI):
             "devices.device_uuid", unique=True, sparse=True, name="uq_customer_device_uuid"
         )
         database.customers.create_index([("created_at", -1)], name="ix_customers_created_at")
-        database.channels.create_index("name", unique=True, name="uq_channels_name")
+        try:
+            database.channels.drop_index("uq_channels_name")
+        except OperationFailure as exc:
+            if exc.code != 27:
+                raise
+        for channel in database.channels.find(
+            {"channel_key": {"$exists": False}},
+            {"name": 1, "url": 1, "stream_url": 1},
+        ):
+            name = channel.get("name", "") or ""
+            url = channel.get("url", channel.get("stream_url", "")) or ""
+            identity = channel_identity(name, url)
+            if identity:
+                database.channels.update_one(
+                    {"_id": channel["_id"]}, {"$set": {"channel_key": identity}}
+                )
+        database.channels.create_index(
+            "channel_key", unique=True, sparse=True, name="uq_channels_identity"
+        )
+        database.channels.create_index("name", name="ix_channels_name")
         database.packages.create_index("name", unique=True, name="uq_packages_name")
         database.subscriptions.create_index([("expires_at", 1)], name="ix_subscriptions_expires_at")
         database.subscriptions.create_index([("customer_id", 1), ("expires_at", -1)], name="ix_subscriptions_customer_expiry")

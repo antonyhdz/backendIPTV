@@ -105,8 +105,32 @@ class ChannelCreate(BaseModel):
     stream_url: str = Field(min_length=1, max_length=2048)
     category: str | None = Field(default=None, max_length=80)
     logo_url: str | None = Field(default=None, max_length=2048)
+    group_title: str = Field(default="", max_length=200)
+    tvg_id: str = Field(default="", max_length=200)
+    tvg_name: str = Field(default="", max_length=200)
+    tvg_chno: str = Field(default="", max_length=40)
+    tvg_logo: str = Field(default="", max_length=2048)
+    tvg_country: str = Field(default="", max_length=200)
+    tvg_language: str = Field(default="", max_length=200)
+    tvg_shift: str = Field(default="", max_length=40)
+    catchup: str = Field(default="", max_length=100)
+    catchup_days: str = Field(default="", max_length=40)
+    catchup_source: str = Field(default="", max_length=2048)
+    tvg_type: str = Field(default="", max_length=100)
+    tvg_season: str = Field(default="", max_length=40)
+    tvg_episode: str = Field(default="", max_length=80)
+    serie_title: str = Field(default="", max_length=200)
+    tvg_tmdb: str = Field(default="", max_length=80)
+    audio_track: str = Field(default="", max_length=100)
+    aspect_ratio: str = Field(default="", max_length=40)
 
-    @field_validator("name", "stream_url", "category", "logo_url")
+    @field_validator(
+        "name", "stream_url", "category", "logo_url", "group_title", "tvg_id",
+        "tvg_name", "tvg_chno", "tvg_logo", "tvg_country", "tvg_language",
+        "tvg_shift", "catchup", "catchup_days", "catchup_source", "tvg_type",
+        "tvg_season", "tvg_episode", "serie_title", "tvg_tmdb", "audio_track",
+        "aspect_ratio",
+    )
     @classmethod
     def strip_text(cls, value: str | None) -> str | None:
         return value.strip() if value else value
@@ -118,6 +142,24 @@ class ChannelUpdate(BaseModel):
     category: str | None = Field(default=None, max_length=80)
     logo_url: str | None = Field(default=None, max_length=2048)
     is_active: bool | None = None
+    group_title: str | None = Field(default=None, max_length=200)
+    tvg_id: str | None = Field(default=None, max_length=200)
+    tvg_name: str | None = Field(default=None, max_length=200)
+    tvg_chno: str | None = Field(default=None, max_length=40)
+    tvg_logo: str | None = Field(default=None, max_length=2048)
+    tvg_country: str | None = Field(default=None, max_length=200)
+    tvg_language: str | None = Field(default=None, max_length=200)
+    tvg_shift: str | None = Field(default=None, max_length=40)
+    catchup: str | None = Field(default=None, max_length=100)
+    catchup_days: str | None = Field(default=None, max_length=40)
+    catchup_source: str | None = Field(default=None, max_length=2048)
+    tvg_type: str | None = Field(default=None, max_length=100)
+    tvg_season: str | None = Field(default=None, max_length=40)
+    tvg_episode: str | None = Field(default=None, max_length=80)
+    serie_title: str | None = Field(default=None, max_length=200)
+    tvg_tmdb: str | None = Field(default=None, max_length=80)
+    audio_track: str | None = Field(default=None, max_length=100)
+    aspect_ratio: str | None = Field(default=None, max_length=40)
 
     @model_validator(mode="before")
     @classmethod
@@ -126,7 +168,13 @@ class ChannelUpdate(BaseModel):
             raise ValueError("Provide non-null fields to update.")
         return value
 
-    @field_validator("name", "stream_url", "category", "logo_url")
+    @field_validator(
+        "name", "stream_url", "category", "logo_url", "group_title", "tvg_id",
+        "tvg_name", "tvg_chno", "tvg_logo", "tvg_country", "tvg_language",
+        "tvg_shift", "catchup", "catchup_days", "catchup_source", "tvg_type",
+        "tvg_season", "tvg_episode", "serie_title", "tvg_tmdb", "audio_track",
+        "aspect_ratio",
+    )
     @classmethod
     def strip_text(cls, value: str | None) -> str | None:
         return value.strip() if value else value
